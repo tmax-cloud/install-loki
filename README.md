@@ -106,9 +106,9 @@
     * 이하 인스톨 가이드는 StorageClass 이름이 csi-cephfs-sc 라는 가정하에 진행한다.
 
 ## Install Steps
-0. [Loki-stack yaml 수정]()
-1. [Loki 설치]()
-2. [Promtail 설치]()
+0. [Loki-stack yaml 수정](https://github.com/tmax-cloud/install-loki#step-0-loki-stack-yaml-%EC%88%98%EC%A0%95)
+1. [Loki 설치](https://github.com/tmax-cloud/install-loki#step-1-loki-%EC%84%A4%EC%B9%98)
+2. [Promtail 설치](https://github.com/tmax-cloud/install-loki#step-2-promtail-%EC%84%A4%EC%B9%98)
 
 ## Step 0. loki-stack yaml 수정
 * 목적 : `loki-stack yaml에 이미지 registry, 버전 및 노드 정보를 수정`

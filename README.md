@@ -57,7 +57,7 @@
 		* LOKI_VERSION
 			* Loki 의 버전
 			* ex) 2.6.0
-			* PROMTAIL_VERSION 의 버전
+	    * PROMTAIL_VERSION 의 버전
 			* ex) 2.6.0
 		* STORAGECLASS_NAME
 			* Loki가 사용할 StorageClass 의 이름

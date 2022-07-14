@@ -42,7 +42,7 @@ spec:
       serviceAccountName: loki-sa
       containers:
       - name: loki
-        image: grafana/loki:{LOKI_VERSION}
+        image: docker.io/grafana/loki:{LOKI_VERSION}
         imagePullPolicy: "IfNotPresent"
         args:
           - "-config.file=/etc/loki/loki.yaml"

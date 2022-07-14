@@ -77,7 +77,7 @@ set -e
 echo " "
 echo "---3. Install Promtail---"
 kubectl apply -f 02_promtail.yaml
-timeout 10m kubectl -n monitoring rollout status daemonset/promtail
+timeout 10m kubectl -n kube-system rollout status daemonset/promtail
 suc=`echo $?`
 if [ $suc != 0 ]; then
   echo "Failed to install Promtail"

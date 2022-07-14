@@ -96,7 +96,7 @@ sleep 10s
 set +e
 for ((i=0; i<11; i++))
 do
-  is_success=`curl -XGET -k -u admin:admin http://$LO_IP:3100/loki/api/v1/labels`
+  is_success=`curl -XGET http://$LO_IP:3100/loki/api/v1/labels`
 
   if [[ "$is_success" == *"success"* ]]; then
     break

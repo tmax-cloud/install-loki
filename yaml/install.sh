@@ -88,6 +88,28 @@ else
   sleep 10s
 fi
 
+# 4. Wait until Promtail makes indexes normally
+echo " "
+echo "---5. Wait until Promtail makes indexes normally---"
+echo "It will take a couple of minutes"
+sleep 10s
+set +e
+for ((i=0; i<11; i++))
+do
+  is_success=`curl -XGET -k -u admin:admin https://$LO_IP:3100/loki/api/v1/labels`
+
+  if [[ "$is_success" == *"success"* ]]; then
+    break
+  elif [ $i == 10 ]; then
+    echo "Timeout. Failed to make indexes"
+    exit 1
+  else
+    echo "try again..."
+    sleep 1m
+  fi
+done
+echo "Promtail made indexes on Loki successfully"
+
 echo " "
 echo "---Installation Done---"
 popd

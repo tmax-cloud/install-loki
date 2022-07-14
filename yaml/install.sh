@@ -67,7 +67,7 @@ do
     exit 1
   else
     echo "try again..."
-    sleep 1m
+    sleep 30s
   fi
 done
 echo "Loki starts up successfully"

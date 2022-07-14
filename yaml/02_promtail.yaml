@@ -118,7 +118,7 @@ spec:
       containers:
         - name: promtail
           image: docker.io/grafana/promtail:{PROMTAIL_VERSION}
-          imagePullPolicy: Always
+          imagePullPolicy: "IfNotPresent"
           args: ["-config.file=/etc/promtail/promtail-config.yaml"]
           volumeMounts:
           - name: promtail-config

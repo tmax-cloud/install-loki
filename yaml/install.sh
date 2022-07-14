@@ -37,7 +37,7 @@ kubectl create namespace monitoring
 
 echo " "
 echo "---1. Install Loki---"
-kubectl apply -f 01_opensearch.yaml
+kubectl apply -f 01_loki.yaml
 timeout 5m kubectl -n monitoring rollout status statefulset/loki
 suc=`echo $?`
 if [ $suc != 0 ]; then

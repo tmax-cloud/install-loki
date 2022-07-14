@@ -117,7 +117,7 @@ spec:
       serviceAccount: promtail
       containers:
         - name: promtail
-          image: grafana/promtail:{PROMTAIL_VERSION}
+          image: docker.io/grafana/promtail:{PROMTAIL_VERSION}
           imagePullPolicy: Always
           args: ["-config.file=/etc/promtail/promtail-config.yaml"]
           volumeMounts:

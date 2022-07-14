@@ -4,16 +4,14 @@
 * Loki Stack은 loki, promtail, grafana로 구성된 플랫폼 조합이다.
 * K8S 클러스터로부터 promtail 수집한 로그를 loki에 적재하면, loki는 수집된 로그를 저장하고 요청에 따라 검색 기능을 제공한다. 그리고 Grafana를 통해 loki에 적재된 데이터를 시각화한다.
 
-## Loki-Grafana 연동
-* [install-Grafana](https://github.com/tmax-cloud/install-grafana) 참조
-
 ## 구성 요소 및 버전
 * Grafana Loki ([grafana/loki:2.6.0](https://hub.docker.com/layers/loki/grafana/loki/2.6.0/images/sha256-ac642ce10cc42da2b341a918ea6711aa11a0c1852694b8350a43bcbcc2725af2?context=explore))
 * Grafana Promtail ([grafana/promtail:2.6.0](https://hub.docker.com/layers/promtail/grafana/promtail/2.6.0/images/sha256-eb71a44bccea03bf5635374be3dbdd5c5ced95f3ea33aec691c0c68c39dd42fa?context=explore))
 
 ## Prerequisites
 * 필수 모듈
-  * [RookCeph](https://github.com/tmax-cloud/hypersds-wiki/) 
+  * [RookCeph](https://github.com/tmax-cloud/hypersds-wiki/)
+  * [Grafana](https://github.com/tmax-cloud/install-grafana)
 
 ## 폐쇄망 설치 가이드
 * 설치를 진행하기 전 아래의 과정을 통해 필요한 이미지 및 yaml 파일을 준비한다.
@@ -143,4 +141,7 @@
     ```bash
     $ kubectl apply -f 02_promtail.yaml
     ```
+
+## Loki-Grafana 연동
+* [install-Grafana](https://github.com/tmax-cloud/install-grafana) 참조
 

@@ -57,7 +57,7 @@ set +e
 export LO_IP=`kubectl get svc -n monitoring | grep loki | tr -s ' ' | cut -d ' ' -f3`
 for ((i=0; i<11; i++))
 do
-  curl -XGET https://$LO_IP:3100/loki/api/v1/status/buildinfo
+  curl -XGET http://$LO_IP:3100/loki/api/v1/status/buildinfo
   is_success=`echo $?`
   if [ $is_success == 0 ]; then
     break

@@ -167,5 +167,5 @@ ex) loki-config ConfigMap 적용 예시
     promtail-config.yaml: |
       server:
         http_listen_port: 9080
-	grpc_listen_port: 0
+	    grpc_listen_port: 0
         log_level: error ## 원하는 log level로 설정한다.

@@ -12,14 +12,13 @@ metadata:
   labels:
     app: loki
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: loki
   ports:
     - port: 3100
       protocol: TCP
       name: http-metrics
-      targetPort: 3100
 ---
 apiVersion: apps/v1
 kind: StatefulSet

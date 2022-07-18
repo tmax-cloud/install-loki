@@ -145,3 +145,27 @@
 ## Loki-Grafana 연동
 * [install-Grafana](https://github.com/tmax-cloud/install-grafana) 참조
 
+
+## 비고
+
+### Loki와 Promtail 모듈의 log level 설정
+* Loki: logger class는 DEBUG, INFO, WARN, ERROR 총 4단계로 지원, default로 설정된 log level은 INFO
+* loki-config ConfigMap에서 원하는 log level로 설정한다.
+
+ex) loki-config ConfigMap 적용 예시
+    
+    loki.yaml: |
+      server:
+        http_listen_port: 3100
+        log_level: error ## 원하는 log level로 설정한다.
+
+* Promtail: loki와 동일하게 DEBUG, INFO, WARN, ERROR 총 4단계로 지원, default로 설정된 log level은 INFO
+* promtail-config ConfigMap에서 원하는 log level로 설정한다.
+
+ex) loki-config ConfigMap 적용 예시
+    
+    promtail-config.yaml: |
+      server:
+        http_listen_port: 9080
+	    grpc_listen_port: 0
+        log_level: error ## 원하는 log level로 설정한다.

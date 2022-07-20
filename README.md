@@ -169,3 +169,23 @@ ex) loki-config ConfigMap 적용 예시
         http_listen_port: 9080
 	    grpc_listen_port: 0
         log_level: error ## 원하는 log level로 설정한다.
+
+### Loki HA 구성 가이드
+* 목적: Loki 파드에 대하여 Active-Active 방식으로 기동하기 위한 설정이다.
+* Loki 구성: Loki Statefulset의 replica를 2로 수정한다.
+    * ex) [01_loki.yaml](yaml/01_loki.yaml)의 statefulset 예시
+
+    ```
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: loki
+      namespace: monitoring
+    labels:
+      app: loki
+    spec:
+      replicas: 2 ## 1에서 2로 수정
+      selector:
+        matchLabels:
+          app: loki 
+    ```

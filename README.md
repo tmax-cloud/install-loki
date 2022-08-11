@@ -189,3 +189,32 @@ ex) loki-config ConfigMap 적용 예시
         matchLabels:
           app: loki 
     ```
+
+### Loki에서 조회할 수 있는 Label Filter 설정
+* 목적: Promtail에서 로그 수집 시, 원하는 label만 볼 수 있도록 whitelist를 기반으로 필터링하기 위함.
+* Promtail config에서 pipeline_stages 설정을 추가하여 조회를 원하는 label 이름을 기입한다.
+    * ex) [02_promtail.yaml](yaml/02_promtail.yaml)의 configmap 예시
+    
+    ```
+    promtail-config.yaml: |
+    
+    scrape_configs:
+    - job_name: kubernetes-pods-name
+      kubernetes_sd_configs:
+      - role: pod
+      pipeline_stages:
+      - labelallow:            ## app, job, filename, namespace, pod_name, container_name label만 loki에서 조회할 수 있다.
+          - app
+          - job
+          - filename
+          - namespace
+          - pod_name
+          - container_name
+      relabel_configs:
+      - source_labels:
+        - __meta_kubernetes_pod_label_name
+      target_label: __service__
+      
+      ...
+      
+    ```

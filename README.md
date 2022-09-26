@@ -163,7 +163,7 @@
 
 ## 비고
 
-### Loki와 Promtail 모듈의 log level 설정
+### 1. Loki와 Promtail 모듈의 log level 설정
 * Loki: logger class는 DEBUG, INFO, WARN, ERROR 총 4단계로 지원, default로 설정된 log level은 INFO
 * loki-config ConfigMap에서 원하는 log level로 설정한다.
 
@@ -185,7 +185,7 @@ ex) loki-config ConfigMap 적용 예시
 	    grpc_listen_port: 0
         log_level: error ## 원하는 log level로 설정한다.
 
-### Loki HA 구성 가이드
+### 2. Loki HA 구성 가이드
 * 목적: Loki 파드에 대하여 Active-Active 방식으로 기동하기 위한 설정이다.
 * Loki 구성: Loki Statefulset의 replica를 2로 수정한다.
     * ex) [01_loki.yaml](yaml/01_loki.yaml)의 statefulset 예시
@@ -205,7 +205,7 @@ ex) loki-config ConfigMap 적용 예시
           app: loki 
     ```
 
-### Loki에서 조회할 수 있는 Label Filter 설정
+### 3. Loki에서 조회할 수 있는 Label Filter 설정
 * 목적: Promtail에서 로그 수집 시, 원하는 label만 볼 수 있도록 whitelist를 기반으로 필터링하기 위함.
 * Promtail config에서 pipeline_stages 설정을 추가하여 조회를 원하는 label 이름을 기입한다.
     * ex) [02_promtail.yaml](yaml/02_promtail.yaml)의 configmap 예시
@@ -233,3 +233,23 @@ ex) loki-config ConfigMap 적용 예시
       ...
       
     ```
+### 4. Loki 로그 보관 주기(Retention) 설정
+* 목적: 로키에 적재된 로그 데이터의 보관 주기를 설정하고 특정 label에 대한 custom retention을 적용할 수 있다.
+* loki-config의 limits_config에서 retention_period를 원하는 기간으로 설정하여 전체 로그 데이터의 보관주기를 설정할 수 있다.
+* 특정 라벨만 별도의 retention 기간을 설정할 경우, retention_stream을 통해 설정할 수 있다.
+* 기존 설정에서 configmap 설정을 변경한 후에는 loki statefulset을 재기동해야한다.
+
+* ex) [01_loki.yaml](yaml/01_loki.yaml)의 configmap인 loki-config에서 limits_config retention 설정 예시
+
+ ```
+   limits_config:
+      retention_period: 168h                ### default로 설정한 retention 기간은 7일이며, 최소 설정 가능 기간은 24h이다.
+      retention_stream:
+      - selector: '{namespace=""}' or '{pod_name=""}'     ### 특정 네임스페이스 또는 특정 파드만 별도의 기간으로 설정하고자 할 경우
+        priority: 1                                       ### selector에 해당 라벨을 지정한 후, period에서 원하는 기간으로 설정한다.
+        period: 24h                                       ### 최소 설정 가능 기간은 24h이다.
+      enforce_metric_name: false
+      ingestion_rate_mb: 16
+      ingestion_burst_size_mb: 32
+      per_stream_rate_limit: 10mb
+      per_stream_rate_limit_burst: 50mb

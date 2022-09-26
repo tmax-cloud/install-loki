@@ -143,7 +143,22 @@
     ```
 
 ## Loki-Grafana 연동
-* [install-Grafana](https://github.com/tmax-cloud/install-grafana) 참조
+* 목적: loki에 적재된 log data를 Grafana UI를 통해 조회
+* 순서: 
+    * Grafana UI에 접속하여 Configuration > DataSource를 클릭한다.
+![image](figure/grafana-ui.png)
+    
+    * Datasource 화면에서 Add data source 버튼을 클릭 후, data source type 목록에서 loki를 클릭한다.
+![image](figure/grafana-ui2.png)
+    
+    * Loki 설정에서 HTTP URI에 "http://loki.monitoring.svc:3100" 을 추가한 뒤 Save & Test를 클릭한다.
+![image](figure/grafana-ui3.png)
+
+* Grafana의 Explore 화면에서 Loki에 적재된 로그 내용을 확인할 수 있다.
+    * ex) namespace가 kafka인 로그 조회 시, namespace label에서 kafka를 클릭 후, show logs 버튼을 클릭한다.
+![image](figure/grafana-ui4.png)
+
+![image](figure/grafana-ui5.png)
 
 
 ## 비고

@@ -219,12 +219,12 @@ ex) loki-config ConfigMap 적용 예시
       - role: pod
       pipeline_stages:
       - labelallow:            ## app, job, filename, namespace, pod_name, container_name label만 loki에서 조회할 수 있다.
-          - app
-          - job
-          - filename
-          - namespace
-          - pod_name
-          - container_name
+        - app
+        - job
+        - filename
+        - namespace
+        - pod_name
+        - container_name
       relabel_configs:
       - source_labels:
         - __meta_kubernetes_pod_label_name

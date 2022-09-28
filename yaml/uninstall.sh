@@ -17,12 +17,5 @@ if [ $suc != 0 ]; then
   #exit 1
 fi
 
-timeout 5m kubectl delete pvc data-loki-0 -n monitoring 
-suc=`echo $?`
-if [ $suc != 0 ]; then
-  echo "Failed to delete loki pvc"
-  #exit 1
-fi
-
 echo "---Uninstallation Done---"
 popd

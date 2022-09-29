@@ -18,7 +18,7 @@
 
 * LogQL을 직접 입력하여 특정 네임스페이스에서 특정 키워드를 가진 로그를 조회:
     * Explore 화면에서 Data source로 Loki를 선택한다.
-    * Log browser 버튼 옆의 빈칸에 조회하고자 하는 LogQL을 입력한 후 Run Query 버튼을 눌러 실행하거나, shift+Enter 키를 눌러 쿼리를 실행한다.
+    * Log browser 버튼 옆의 빈칸에 조회하고자 하는 LogQL을 입력한 후 Run Query 버튼을 눌러 실행하거나, shift+Enter를 눌러 쿼리를 실행한다.
     * LogQL 예시
        * 특정 네임스페이스 로그를 조회할 경우: {namespace="hyperauth"}
        * 특정 네임스페이스 안의 특정 파드의 로그만 조회할 경우: {namespace="hyperauth", pod_name="kafka-kafka-0"}

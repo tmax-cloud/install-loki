@@ -27,7 +27,9 @@
            * (해당 파드를 제외한 나머지의 경우 pod_name!="kafka-kafka-0")
        * 특정 파드 안에 특정 키워드를 포함한 로그만 조회할 경우: {pod_name="kafka-kafka-0"} |= "error" 
            * (해당 키워드를 제외한 나머지의 경우 != "error")
-       * 정규식 사용하여 조회할 경우: {pod_name=~"kafka.+"} 일치 / {namespace="hyperauth", pod_name!~"kafka.+"} 불일치 
+       * 정규식 사용하여 조회할 경우: 
+           * {pod_name=~"kafka.+"} 일치 
+           * {namespace="hyperauth", pod_name!~"kafka.+"} 불일치 
 
 * 예시: {namespace="hyperauth", pod_name="kafka-kafka-0"} |= "error"
 ![image](../figure/grafana-logql.png)

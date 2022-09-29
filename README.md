@@ -1,3 +1,6 @@
+# Loki 기능 가이드
+[Grafana-Loki 로그 조회 가이드](doc/README_basic.md)
+
 # Loki 설치 가이드
 
 ## 개요

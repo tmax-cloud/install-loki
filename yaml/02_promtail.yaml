@@ -86,6 +86,12 @@ spec:
         - name: promtail
           image: docker.io/grafana/promtail:{PROMTAIL_VERSION}
           imagePullPolicy: "IfNotPresent"
+          securityContext:
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            allowPrivilegeEscalation: true
           args: ["-config.file=/etc/promtail/promtail-config.yaml", "--client.external-labels=hostname=$(HOSTNAME)"]
           volumeMounts:
           - name: promtail-config

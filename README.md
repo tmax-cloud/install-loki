@@ -18,7 +18,7 @@
 ## Prerequisites
 * 필수 모듈
   * [RookCeph](https://github.com/tmax-cloud/hypersds-wiki/)
-  * [Grafana](https://github.com/tmax-cloud/install-grafana/tree/5.1) 또는 [Grafana-Operator](https://github.com/tmax-cloud/install-grafana-operator)
+  * [Grafana 8.2.2](https://github.com/tmax-cloud/install-grafana/tree/5.1) 또는 [Grafana-Operator](https://github.com/tmax-cloud/install-grafana-operator)
 
 ## 폐쇄망 설치 가이드
 * 설치를 진행하기 전 아래의 과정을 통해 필요한 이미지 및 yaml 파일을 준비한다.
@@ -214,7 +214,8 @@ ex) loki-config ConfigMap 적용 예시
 
 ### 3. Loki에서 조회할 수 있는 Label Filter 설정
 * 목적: Promtail에서 로그 수집 시, 원하는 label만 볼 수 있도록 whitelist를 기반으로 필터링하기 위함.
-* Promtail config에서 pipeline_stages 설정을 추가하여 조회를 원하는 label 이름을 기입한다.
+* Promtail config에서 job_name 별로 pipeline_stages 설정을 추가하여 조회를 원하는 label 이름을 기입한다.
+    * 비고: 현재 promtail config에 설정된 job_name은 총 5개이며, 각 pipeline_stages 설정도 5번 추가해야 한다
     * ex) [02_promtail.yaml](yaml/02_promtail.yaml)의 configmap 예시
     
     ```

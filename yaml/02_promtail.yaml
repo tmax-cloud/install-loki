@@ -62,8 +62,8 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop:
-                - ALL
-            allowPrivilegeEscalation: true
+                - all
+            allowPrivilegeEscalation: false
           args: ["-config.file=/etc/promtail/promtail-config.yaml", "--client.external-labels=hostname=$(HOSTNAME)"]
           volumeMounts:
           - name: promtail-config

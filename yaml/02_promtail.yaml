@@ -111,6 +111,7 @@ data:
     - job_name: kubernetes-pods-name
       kubernetes_sd_configs:
       - role: pod
+      #pipeline_stages:
       relabel_configs:
       - source_labels:
         - __meta_kubernetes_pod_label_name
@@ -148,6 +149,7 @@ data:
     - job_name: kubernetes-pods-app
       kubernetes_sd_configs:
       - role: pod
+      #pipeline_stages:
       relabel_configs:
       - action: drop
         regex: .+
@@ -189,6 +191,7 @@ data:
     - job_name: kubernetes-pods-static
       kubernetes_sd_configs:
       - role: pod
+      #pipeline_stages:
       relabel_configs:
       - action: drop
         regex: ^$
@@ -231,6 +234,7 @@ data:
     - job_name: kubernetes-pods-direct-controllers
       kubernetes_sd_configs:
       - role: pod
+      #pipeline_stages:
       relabel_configs:
       - action: drop
         regex: .+
@@ -278,6 +282,7 @@ data:
     - job_name: kubernetes-pods-indirect-controller
       kubernetes_sd_configs:
       - role: pod
+      #pipeline_stages:
       relabel_configs:
       - action: drop
         regex: .+

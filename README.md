@@ -1,9 +1,9 @@
 # Loki 기능 가이드
-[Grafana-Loki 로그 조회 가이드](doc/README_basic.md)
-[Loki 데이터 접근 제어 설정](doc/README_role.md)
-[Loki Trace log 수집 가이드](doc/README_trace.md)
-[Loki Alert 설정 가이드](doc/README_alert.md)
-[Loki Data migration 가이드](doc/README_migration.md)
+* [Grafana-Loki 로그 조회 가이드](doc/README_basic.md)
+* [Loki 데이터 접근 제어 설정](doc/README_role.md)
+* [Loki Trace log 수집 가이드](doc/README_trace.md)
+* [Loki Alert 설정 가이드](doc/README_alert.md)
+* [Loki Data migration 가이드](doc/README_migration.md)
 
 # Loki 설치 가이드
 

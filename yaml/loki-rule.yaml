@@ -6,21 +6,16 @@ metadata:
 data:
   rules.yml: |
     groups:
-      - name: rate-alerting
-        rules:
-          - alert: HighLogRate
-            expr: |
-              sum by (namespace)
-                (rate({hostname=~"ck.+"}[1m]))
-                > 60
-            for: 1m
-            labels:
-                severity: warning
-            annotations:
-                title: "High LogRate Alert"
-                description: "something is logging a lot"
-                impact: "impact"
-                action: "action"
-                message: >-
-                  {{ $labels.namespace }} namespace pods
-                  are logging a lot.                                 
+    - name: should_fire
+      rules:
+      - alert: HighPercentageError
+        expr: |
+          sum(rate({namespace="monitoring", pod_name="loki-0"} |= "error" [5m])) by (hostname)
+            /
+          sum(rate({namespace="monitoring", pod_name="loki-0"}[5m])) by (hostname)
+            > 0.05
+        for: 10m
+        labels:
+            severity: page
+        annotations:
+            summary: High request latency                  

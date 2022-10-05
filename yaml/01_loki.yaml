@@ -182,3 +182,4 @@ data:
         kvstore:
           store: inmemory
       enable_api: true
+      enable_alertmanager_v2: true

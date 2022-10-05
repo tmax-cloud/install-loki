@@ -176,6 +176,8 @@ data:
           directory: /loki/rules
       rule_path: /loki/scratch
       alertmanager_url: http://alertmanager-main.monitoring.svc:9093
+      wal:
+        dir: /loki/wal
       ring:
         kvstore:
           store: inmemory

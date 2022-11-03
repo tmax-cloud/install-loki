@@ -31,7 +31,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: promtail
-    namespace: kube-system
+    namespace: monitoring
 roleRef:
   kind: ClusterRole
   name: promtail

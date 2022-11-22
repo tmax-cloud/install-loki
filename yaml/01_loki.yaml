@@ -164,9 +164,6 @@ data:
         shared_store: filesystem
       filesystem:
         directory: /loki/chunks
-
-    chunk_store_config:
-      max_look_back_period: 168h # 7d
     
     compactor:
       retention_enabled: true

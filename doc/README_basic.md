@@ -48,4 +48,6 @@
 * Grafana UI에서 Dashboards > Manage에서 로그를 조회하고자 하는 네임스페이스 폴더를 선택하여 log dashboard를 클릭한다.
 * pod_name을 선택하여 특정 pod_name에 대한 로그 조회 및 키워드 조회가 가능하다.
     * Timeline은 시간별 적재된 로그 수에 대한 그래프이며, Logs는 최신 로그부터 오래된 로그 순으로 정렬되어 나타난다.
+    * ex) monitoring namespace에 대한 로그 대시보드
+
 ![image](../figure/log-dashboard.png)

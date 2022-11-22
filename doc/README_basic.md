@@ -6,8 +6,8 @@
 * Promtail을 통해 수집한 log data는 Loki와 연동된 pvc에 적재하여 관리하거나 별도의 저장소를 연동하여 관리할 수 있다.
 ![image](../figure/loki-stack.png)
 
-## Grafana UI에서 로그 조회하기
-* 목적: Promtail을 통해 로그가 Loki에 적재가 잘 되고 있는지 확인하고, explore를 통해 로그의 상세 내역을 조회할 수 있다.
+## Grafana UI에서 Explore로 로그 조회하기
+* 목적: Admin 유저로 접속하여 Promtail을 통해 로그가 Loki에 적재가 잘 되고 있는지 확인하고, explore를 통해 로그의 상세 내역을 조회할 수 있다.
 * Log browser를 통해 label을 클릭하여 조회하는 방법과 LogQL을 직접 입력하여 조회하는 방법이 있다.
 * Log browser로 네임스페이스 로그 조회: 
     * Explore 화면에서 Data Source로 Loki를 선택한다.
@@ -34,11 +34,18 @@
 * 예시: {namespace="hyperauth", pod_name="kafka-kafka-0"} |= "error"
 ![image](../figure/grafana-logql.png)
 
-### 비고: 
-* 조회하려는 time range를 변경할 때 default로 설정되어있는 'Last 1 hour'를 클릭하면 Absolute time range를 통해 직접 설정하거나 리스트에 있는 time range를 클릭하여 변경할 수 있다.
+* 비고: 
+    * 조회하려는 time range를 변경할 때 default로 설정되어있는 'Last 1 hour'를 클릭하면 Absolute time range를 통해 직접 설정하거나 리스트에 있는 time range를 클릭하여 변경할 수 있다.
 
-![image](../figure/grafana-timerange.png)
+    ![image](../figure/grafana-timerange.png)
 
-* Explore 화면의 가장 오른쪽 위에 있는 Live 버튼을 클릭하면 실시간으로 적재되는 log를 조회하여 확인할 수 있다.
+    * Explore 화면의 가장 오른쪽 위에 있는 Live 버튼을 클릭하면 실시간으로 적재되는 log를 조회하여 확인할 수 있다.
 
-![image](../figure/grafana-live.png) 
+    ![image](../figure/grafana-live.png)
+    
+## Grafana UI에서 대시보드로 로그 조회하기
+* 목적: Admin이 아닌 유저로 접속할 경우, 네임스페이스별로 생성된 로그 대시보드를 통해 로그를 조회할 수 있다.
+* Grafana UI에서 Dashboards > Manage에서 로그를 조회하고자 하는 네임스페이스 폴더를 선택하여 log dashboard를 클릭한다.
+* pod_name을 선택하여 특정 pod_name에 대한 로그 조회 및 키워드 조회가 가능하다.
+    * Timeline은 시간별 적재된 로그 수에 대한 그래프이며, Logs는 최신 로그부터 오래된 로그 순으로 정렬되어 나타난다.
+![image](../figure/log-dashboard.png)

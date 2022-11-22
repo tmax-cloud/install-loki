@@ -1,6 +1,7 @@
 # Loki 기능 가이드
 * [Grafana-Loki 로그 조회 가이드](doc/README_basic.md)
 * [Loki Alert 설정 가이드](doc/README_alert.md)
+* [Loki Log Dashboard 권한 설정 가이드](doc/README_dashboardrole.md)
 
 # Loki 설치 가이드
 
@@ -149,7 +150,7 @@
 ## Loki-Grafana 연동
 * 목적: loki에 적재된 log data를 Grafana UI를 통해 조회
 * 순서: 
-    * Grafana UI에 접속하여 Configuration > DataSource를 클릭한다.
+    * Admin 권한을 가진 유저로 Grafana UI에 접속하여 Configuration > DataSource를 클릭한다.
 ![image](figure/grafana-ui.png)
     
     * Datasource 화면에서 Add data source 버튼을 클릭 후, data source type 목록에서 loki를 클릭한다.

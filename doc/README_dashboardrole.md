@@ -10,7 +10,7 @@
 * 순서: 
     * Admin 계정으로 접속하여 Dashboard > Manage 에서 권한을 설정하려는 네임스페이스 폴더를 클릭한다. ex) Go to folder
     * Permissions에서 해당 folder의 대시보드에 접근할 수 있는 사용자 혹은 특정한 role을 가지고 있는 사용자 모두에게 대시보드에 대한 권한을 부여할 수 있다.
-    
+    * ex) Monitoring 폴더에 대하여 사용자에게 Viewer 권한 적용 예시
     ![image](../figure/dashboard-role2.png)
     
     

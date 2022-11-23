@@ -8,10 +8,9 @@
 
 ## Log Dashboard 사용자 접근 권한 설정
 * 순서: 
-    * Admin 계정으로 접속하여 Dashboard > Manage 에서 권한을 설정하려는 네임스페이스 폴더 내부의 dashboard를 클릭한다.
-    * 조회 시간 설정 옆에 있는 톱니바퀴 아이콘을 클릭한 후 Settings에서 Permission을 클릭한다.
-    * Add Permission을 클릭하여 특정 사용자 혹은 특정한 role을 가지고 있는 사용자 모두에게 대시보드에 대한 권한을 부여할 수 있다.
+    * Admin 계정으로 접속하여 Dashboard > Manage 에서 권한을 설정하려는 네임스페이스 폴더를 클릭한다. ex) Go to folder
+    * Permissions에서 해당 folder의 대시보드에 접근할 수 있는 사용자 혹은 특정한 role을 가지고 있는 사용자 모두에게 대시보드에 대한 권한을 부여할 수 있다.
     
-    ![image](../figure/dashboard-role1.png)
+    ![image](../figure/dashboard-role2.png)
     
     

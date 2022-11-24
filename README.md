@@ -2,6 +2,7 @@
 * [Grafana-Loki 로그 조회 가이드](doc/README_basic.md)
 * [Loki Alert 설정 가이드](doc/README_alert.md)
 * [Loki Log Dashboard 권한 설정 가이드](doc/README_dashboardrole.md)
+* [Opensearch-Loki 마이그레이션 가이드](doc/README_lokimigration.md)
 
 # Loki 설치 가이드
 

@@ -1,0 +1,81 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: loki-migration
+  namespace: kube-logging
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: logstash
+        image: docker.io/tmaxcloudck/logstash:opensearch-loki-plugin
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 5044
+        volumeMounts:
+        - mountPath: /usr/share/logstash/config
+          name: config-volume
+        - mountPath: /usr/share/logstash/pipeline
+          name: logstash-pipeline-volume
+        - mountPath: /usr/share/logstash/certs/ca.crt
+          name: cacert
+          subPath: ca.crt
+      volumes:
+      - name: cacert
+        secret:
+          secretName: opensearch-secret
+      - name: config-volume
+        configMap:
+          name: logstash-configmap
+          items:
+          - key: logstash.yml
+            path: logstash.yml
+      - name: logstash-pipeline-volume
+        configMap:
+          name: logstash-configmap
+          items:
+          - key: logstash.conf
+            path: logstash.conf
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-configmap
+  namespace: kube-logging
+data:
+  logstash.yml: |
+    http.host: "0.0.0.0"
+    path.config: /usr/share/logstash/pipeline
+  logstash.conf: |
+    input {
+      opensearch {
+        hosts => ["opensearch.kube-logging.svc:9200"]
+        user => "admin"
+        password => "admin"
+        index => "logstash-*"
+        query => '{ "query": { "match_all": {}} }'
+        ssl => true
+        ca_file => "/usr/share/logstash/certs/ca.crt"
+      }
+    }
+    filter {
+      mutate {
+        add_field => {
+          "job" => "opensearch"
+          "namespace" => "%{[kubernetes][namespace_name]}"
+          "container_name" => "%{[kubernetes][container_name]}"
+          "pod_name" => "%{[kubernetes][pod_name]}"
+          "hostname" => "%{[kubernetes][host]}"
+        }
+      }
+    }
+    output {
+      loki {
+        url => "http://loki.monitoring.svc:3100/loki/api/v1/push"
+        message_field => "log"
+        insecure_skip_verify => true
+      }
+    }

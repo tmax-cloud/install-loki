@@ -64,7 +64,7 @@ data:
     filter {
       mutate {
         add_field => {
-          "job" => "opensearch"
+          "job" => "opensearch-migration"
           "namespace" => "%{[kubernetes][namespace_name]}"
           "container_name" => "%{[kubernetes][container_name]}"
           "pod_name" => "%{[kubernetes][pod_name]}"

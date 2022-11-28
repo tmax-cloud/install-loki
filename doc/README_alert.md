@@ -27,4 +27,4 @@ rule.yml: |
 ```
 
 * kubectl apply -f loki-rule.yaml을 실행하여 설정한 rule을 적용시킨다.
-* 설정된 Rule을 삭제하고자 경우, kubectl delete -f loki-rule.yaml을 실행한다.
+* 설정된 Rule을 삭제경우, kubectl delete -f loki-rule.yaml을 실행한다.

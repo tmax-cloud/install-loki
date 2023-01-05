@@ -11,8 +11,8 @@
 * K8S 클러스터로부터 promtail 수집한 로그를 loki에 적재하면, loki는 수집된 로그를 저장하고 요청에 따라 검색 기능을 제공한다. 그리고 Grafana를 통해 loki에 적재된 데이터를 시각화한다.
 
 ## 구성 요소 및 버전
-* Grafana Loki ([grafana/loki:2.6.0](https://hub.docker.com/layers/loki/grafana/loki/2.6.0/images/sha256-ac642ce10cc42da2b341a918ea6711aa11a0c1852694b8350a43bcbcc2725af2?context=explore))
-* Grafana Promtail ([grafana/promtail:2.6.0](https://hub.docker.com/layers/promtail/grafana/promtail/2.6.0/images/sha256-eb71a44bccea03bf5635374be3dbdd5c5ced95f3ea33aec691c0c68c39dd42fa?context=explore))
+* Grafana Loki ([grafana/loki:2.7.1(https://hub.docker.com/layers/grafana/loki/2.7.1/images/sha256-d69f377ecfdbb3f72086a180dcd7c2f02c795cf1867bbeb61606b42a8d41a557?context=explore))
+* Grafana Promtail ([grafana/promtail:2.7.1(https://hub.docker.com/layers/grafana/promtail/2.7.1/images/sha256-38a955569ede670e3e91673cce00bf41990b4a3e88b011d1e6cb2b186e6a78fc?context=explore))
 
 ## Prerequisites
 * 필수 모듈
@@ -29,8 +29,8 @@
     $ mkdir -p ~/loki-install
     $ export OS_HOME=~/loki-install
     $ cd $OS_HOME
-    $ export LOKI_VERSION=2.6.0
-    $ export PROMTAIL_VERSION=2.6.0
+    $ export LOKI_VERSION=2.7.1
+    $ export PROMTAIL_VERSION=2.7.1
     $ export REGISTRY={ImageRegistryIP:Port}
     ```
     * 외부 네트워크 통신이 가능한 환경에서 필요한 이미지를 다운받는다.
@@ -59,10 +59,10 @@
 	* 환경에 맞는 config 내용 작성
 		* LOKI_VERSION
 			* Loki 의 버전
-			* ex) 2.6.0
+			* ex) 2.7.1
 	    * PROMTAIL_VERSION 
 	        * Promtail 의 버전
-			* ex) 2.6.0
+			* ex) 2.7.1
 		* STORAGECLASS_NAME
 			* Loki가 사용할 StorageClass 의 이름
             * {STORAGECLASS_NAME} 그대로 유지시 default storageclass 사용
@@ -101,8 +101,8 @@
 2. 변수 export
     * 다운 받을 버전을 export한다. 
     ```bash
-    $ export LOKI_VERSION=2.6.0
-    $ export PROMTAIL_VERSION=2.6.0
+    $ export LOKI_VERSION=2.7.1
+    $ export PROMTAIL_VERSION=2.7.1
     $ export STORAGECLASS_NAME=csi-cephfs-sc
     ```
 

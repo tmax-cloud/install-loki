@@ -170,6 +170,9 @@ data:
       retention_delete_delay: 30m
       working_directory: /loki/compactor
       shared_store: filesystem
+    
+    analytics:
+      reporting_enabled: false
       
     ruler:
       storage:
